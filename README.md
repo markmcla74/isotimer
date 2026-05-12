@@ -1,6 +1,1 @@
-Click on this link to see what this stopwatch looks like:
-https://markmcla74.github.io/Stopwatch-In-Javascript/
-
-I primarily used the code from this youtube video: https://www.youtube.com/watch?v=8Nsb9cjmOVA&t=459s
-
-The stopwatch in the youtube video uses three buttons, while my stopwatch uses two buttons. 
+The Isometric Exercise Timer follows Steve Maxwell's protocol for overcoming isometric exercises. Overcoming isometrics are strength exercises where you exert maximal force against an immovable object or resistance. Examples include a bicep curl with a WorldFit ISO Trainer strap, or an isometric squat with forearm forklift strap wrapped around your waist and looped around your feet. The protocol is 30 seconds moderate effort, 30 seconds hard effort, and the final 30 seconds as hard as you dare! https://markmcla74.github.io/isotimer/
