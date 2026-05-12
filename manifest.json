@@ -1,0 +1,22 @@
+{
+  "short_name": "IsoTimer",
+  "name": "Isometric Exercise Timer",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#FFF9C4",
+  "display": "standalone",
+  "scope": "./",
+  "theme_color": "#FFF9C4",
+  "description": "Isometric training timer with color-coded hold milestones."
+}

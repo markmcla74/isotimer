@@ -1,0 +1,84 @@
+/* style.css */
+*
+/* Import Roboto Mono - No dots in the zeros! */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #FFF9C4; /* Soft Yellow */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents accidental scrolling on mobile */
+    /* Clean, modern font for everything */
+    font-family: -apple-system, sans-serif;
+}
+
+#timeContainer {
+text-align: center;
+width: 90%;
+max-width: 500px;
+padding: 40px 20px;
+background-color: #222222;
+border-radius: 40px;
+box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+#timeDisplay {
+color: #40c437;
+font-weight: 800;
+
+/* This specific stack avoids 'Consolas' (the dot culprit)
+ *      but stays monospaced (the shifting fix) */
+font-family: 'Courier New', Courier, monospace;
+
+/* Modern browsers use this to lock character widths */
+font-variant-numeric: tabular-nums;
+
+font-size: 25vw;
+line-height: 1;
+display: block;
+text-align: center;
+margin-bottom: 30px;
+
+/* Courier can look a bit thin, so we 'bulk it up' with text-shadow
+ *      instead of a dot-heavy font weight */
+text-shadow: 1px 0px 0px #40c437;
+}
+
+@media (min-width: 600px) {
+    #timeDisplay { font-size: 150px; }
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    flex: 1 1 130px; /* Makes buttons chunky and easy to tap */
+    padding: 15px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 3px solid white;
+    border-radius: 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: inherit; /* Takes the clean font from the body */
+}
+
+.startTimerBtn { background-color: #0000FF; color: white; }
+.resetTimerBtn { background-color: #7EC8E3; color: black; }
+
+button:disabled {
+    opacity: 0.3;
+    filter: grayscale(1);
+}
