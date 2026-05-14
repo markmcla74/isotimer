@@ -16,6 +16,7 @@
   "start_url": "./index.html",
   "background_color": "#FFF9C4",
   "display": "standalone",
+  "orientation": "portrait",
   "scope": "./",
   "theme_color": "#FFF9C4",
   "description": "Isometric training timer with color-coded hold milestones."
