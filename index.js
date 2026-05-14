@@ -1,3 +1,11 @@
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker registered!'))
+        .catch(err => console.log('Service Worker failed:', err));
+    });
+}
+
 const timeDisplay = document.querySelector("#timeDisplay");
 const startBtn = document.querySelector("#startBtn");
 const delayedStartBtn = document.querySelector("#delayedStartBtn");
