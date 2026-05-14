@@ -7,6 +7,17 @@
     margin: 0;
     padding: 0;
 }
+/* 1. The Global Lock */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    /* This prevents horizontal scrolling entirely */
+    overflow-x: hidden;
+    /* This stops the "rubber-band" bounce effect on mobile */
+    position: fixed;
+}
 
 body {
     background-color: #FFF9C4; /* Soft Yellow */
