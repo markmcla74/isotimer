@@ -9,6 +9,26 @@ let elapsedTime = 0;
 let intervalId;
 let countdownId;
 let isRunning = false;
+let lastBeepSecond = -1;
+
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playBeep(frequency = 440, duration = 0.1) {
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+
+    gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + duration);
+}
 
 // --- Helper Functions ---
 
@@ -49,11 +69,20 @@ function startTimer() {
 }
 
 // --- Event Listeners ---
-
 // 1. Instant Start
 startBtn.addEventListener("click", () => {
     clearAllIntervals();
     elapsedTime = 0;
+
+    // 1. Resume audio context for mobile browsers
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+
+    // 2. Play the high-pitch "Start" beep (880Hz)
+    playBeep(880, 0.3);
+
+    // 3. Kick off the timer
     startTimer();
 });
 
@@ -71,8 +100,12 @@ delayedStartBtn.addEventListener("click", () => {
         count--;
         if (count > 0) {
             timeDisplay.textContent = `READY: ${count}`;
+            // Beep on 2 and 1
+            if (count <= 2) playBeep(440, 0.1);
         } else {
             clearInterval(countdownId);
+            timeDisplay.style.fontSize = "";
+            playBeep(880, 0.3); // Higher, longer beep for START
             startTimer();
         }
     }, 1000);
@@ -96,6 +129,7 @@ stopResumeBtn.addEventListener("click", () => {
 resetBtn.addEventListener("click", () => {
     clearAllIntervals();
     elapsedTime = 0;
+    lastBeepSecond = -1
     timeDisplay.textContent = "00:00";
     document.body.style.backgroundColor = "#FFF9C4"; // Soft Yellow (Reset/Ready)
     updateUI("reset");
@@ -104,24 +138,42 @@ resetBtn.addEventListener("click", () => {
 function updateTime() {
     elapsedTime = Date.now() - startTime;
 
-    let s = Math.floor((elapsedTime / 1000) % 60);
+    let totalSeconds = Math.floor(elapsedTime / 1000);
+    let s = totalSeconds % 60;
     let m = Math.floor((elapsedTime / (1000 * 60)) % 60);
-    let totalSeconds = elapsedTime / 1000;
 
-    // Background Color Logic
-    if (totalSeconds <= 0) {
+    // --- BEEP LOGIC ---
+    // Only check for a beep if we have moved to a brand new second
+    if (totalSeconds !== lastBeepSecond) {
+
+        // Warning beeps: 28, 29 | 58, 59 | 88, 89
+        if (totalSeconds === 28 || totalSeconds === 29 ||
+            totalSeconds === 58 || totalSeconds === 59 ||
+            totalSeconds === 88 || totalSeconds === 89) {
+            playBeep(440, 0.1); // Lower "warning" beep
+            }
+
+            // Milestone beeps: 30, 60, 90
+            else if (totalSeconds === 30 || totalSeconds === 60 || totalSeconds === 90) {
+                playBeep(880, 0.3); // Higher "success" beep
+            }
+
+            lastBeepSecond = totalSeconds; // Update our memory
+    }
+
+    // --- BACKGROUND COLOR LOGIC ---
+    if (totalSeconds < 0) { // Changed <= 0 to < 1 for smoother start
         document.body.style.backgroundColor = "#FFF9C4";
-    } else if (totalSeconds <= 30) {
+    } else if (totalSeconds < 30) {
         document.body.style.backgroundColor = "#add8e6";
-    } else if (totalSeconds <= 60) {
+    } else if (totalSeconds < 60) {
         document.body.style.backgroundColor = "#FFB74D";
-    } else if (totalSeconds <= 90) {
+    } else if (totalSeconds < 90) {
         document.body.style.backgroundColor = "#EF5350";
     } else {
         document.body.style.backgroundColor = "#66BB6A";
     }
 
-    // New cleaner display: 00:00
     timeDisplay.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }
 
