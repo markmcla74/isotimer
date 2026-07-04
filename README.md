@@ -10,5 +10,5 @@ The Isometric Exercise Timer is designed to follow the 30/60/90 second isometric
 
 When you launch IsoTimer from your home screen icon, the browser completely hides its top address bar and bottom navigation controls. It opens in glorious full-screen canvas mode, completely indistinguishable from a native app marketplace title.
 
-If you have an Android phone, you are welcome to download any of my apps from the google play store. They are all free and none of them contain ads.
+Alternatively, you are welcome to download this app, or any of my apps, from the google play store. All of my apps are free, and none of them contain ads.
 https://play.google.com/store/search?q=markmcla&c=apps
