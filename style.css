@@ -30,9 +30,9 @@ body {
 
 #timeContainer {
 text-align: center;
-width: 85%;
-max-width: 400px;
-padding: 40px 20px;
+width: 90%;
+max-width: 420px;
+padding: 25px 20px;
 background-color: #222222;
 border-radius: 40px;
 box-shadow: 0 20px 50px rgba(0,0,0,0.2);
@@ -42,7 +42,7 @@ margin: auto;
 #timeDisplay {
 color: #40c437;
 font-weight: 800;
-font-size: 22vw;
+font-size: 20vw;
 font-family: monospace;
 font-variant-numeric: tabular-nums;
 letter-spacing: 0;
@@ -54,27 +54,30 @@ line-height: 1;
 
 @media (min-width: 600px) {
     #timeDisplay {
-    font-size: 100px;
+    font-size: 90px;
     }
 }
 
+/* 2x4 Grid Configuration */
 .button-group {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Exactly 2 equal columns */
     gap: 10px;
-    justify-content: center;
+    width: 100%;
 }
 
 button {
-    flex: 1 1 130px;
-    padding: 15px 10px;
-    font-size: 14px;
+    width: 100%;
+    padding: 14px 8px;
+    font-size: 13px;
     font-weight: bold;
     border: 3px solid white;
     border-radius: 15px;
     cursor: pointer;
     text-transform: uppercase;
     font-family: inherit;
+    /* Ensure text wraps cleanly on small screens if needed */
+    white-space: nowrap;
 }
 
 .startTimerBtn { background-color: #0000FF; color: white; }
