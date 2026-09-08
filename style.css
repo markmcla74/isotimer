@@ -7,7 +7,7 @@
     padding: 0;
 }
 
-/* 1. The Global Lock */
+/* 1. Global Lock */
 html, body {
     margin: 0;
     padding: 0;
@@ -32,7 +32,7 @@ body {
 text-align: center;
 width: 90%;
 max-width: 420px;
-padding: 25px 20px;
+padding: 20px 15px; /* Slightly tightened padding to give text room */
 background-color: #222222;
 border-radius: 40px;
 box-shadow: 0 20px 50px rgba(0,0,0,0.2);
@@ -42,26 +42,26 @@ margin: auto;
 #timeDisplay {
 color: #40c437;
 font-weight: 800;
-font-size: 20vw;
+font-size: 24vw; /* Increased ~20% from 20vw */
 font-family: monospace;
 font-variant-numeric: tabular-nums;
 letter-spacing: 0;
 display: block;
 width: 100%;
-margin-bottom: 20px;
-line-height: 1;
+margin-bottom: 12px;
+line-height: 0.95;
 }
 
 @media (min-width: 600px) {
     #timeDisplay {
-    font-size: 90px;
+    font-size: 110px; /* Increased from 90px */
     }
 }
 
 /* 2x4 Grid Configuration */
 .button-group {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Exactly 2 equal columns */
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     width: 100%;
 }
@@ -76,7 +76,6 @@ button {
     cursor: pointer;
     text-transform: uppercase;
     font-family: inherit;
-    /* Ensure text wraps cleanly on small screens if needed */
     white-space: nowrap;
 }
 
