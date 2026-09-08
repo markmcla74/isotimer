@@ -8,8 +8,8 @@ if ('serviceWorker' in navigator) {
 
 const timeDisplay = document.querySelector("#timeDisplay");
 const startBtn = document.querySelector("#startBtn");
-const delayedStartBtn = document.querySelector("#delayedStartBtn");
-const stopResumeBtn = document.querySelector("#stopResumeBtn"); // Combined Button
+const delayBtns = document.querySelectorAll(".delayBtn");
+const stopResumeBtn = document.querySelector("#stopResumeBtn");
 const resetBtn = document.querySelector("#resetBtn");
 
 let startTime = 0;
@@ -45,28 +45,39 @@ function clearAllIntervals() {
     clearInterval(countdownId);
 }
 
-// Update your main logic to call these functions:
-// 1. Modified updateUI function:
+function setDelayButtonsDisabled(isDisabled) {
+    delayBtns.forEach(btn => btn.disabled = isDisabled);
+}
+
 function updateUI(state) {
     if (state === "running") {
         isRunning = true;
         stopResumeBtn.innerText = "Stop";
         stopResumeBtn.style.backgroundColor = "red";
         startBtn.disabled = true;
-        delayedStartBtn.disabled = true;
-        requestWakeLock(); // <-- ACTIVATE WAKE LOCK
+        setDelayButtonsDisabled(false);
+        requestWakeLock();
     } else if (state === "stopped") {
         isRunning = false;
         stopResumeBtn.innerText = "Resume";
         stopResumeBtn.style.backgroundColor = "green";
-        releaseWakeLock(); // <-- DEACTIVATE WAKE LOCK
+        setDelayButtonsDisabled(false);
+        releaseWakeLock();
+    } else if (state === "countdown") {
+        isRunning = false;
+        stopResumeBtn.innerText = "Stop";
+        stopResumeBtn.style.backgroundColor = "#666";
+        startBtn.disabled = true;
+        setDelayButtonsDisabled(false);
+        requestWakeLock();
     } else {
+        // Reset state
         isRunning = false;
         stopResumeBtn.innerText = "Stop";
         stopResumeBtn.style.backgroundColor = "#666";
         startBtn.disabled = false;
-        delayedStartBtn.disabled = false;
-        releaseWakeLock(); // <-- DEACTIVATE WAKE LOCK (on reset)
+        setDelayButtonsDisabled(false);
+        releaseWakeLock();
     }
 }
 
@@ -76,71 +87,78 @@ function startTimer() {
     intervalId = setInterval(updateTime, 10);
 }
 
-// --- Event Listeners ---
-// 1. Instant Start
-startBtn.addEventListener("click", () => {
+function triggerDelay(seconds) {
     clearAllIntervals();
-    elapsedTime = 0;
 
-    // 1. Resume audio context for mobile browsers
+    elapsedTime = 0;
+    lastBeepSecond = -1;
+
+    // Force background back to Soft Blue for the countdown phase
+    document.body.style.backgroundColor = "#add8e6";
+
     if (audioCtx.state === 'suspended') {
         audioCtx.resume();
     }
 
-    // 2. Play the high-pitch "Start" beep (880Hz)
-    playBeep(880, 0.3);
+    updateUI("countdown");
 
-    // 3. Kick off the timer
-    startTimer();
-});
-
-// 2. Delayed Start
-delayedStartBtn.addEventListener("click", () => {
-    clearAllIntervals();
-    elapsedTime = 0;
-    startBtn.disabled = true;
-    delayedStartBtn.disabled = true;
-
-    let count = 5;
+    let count = seconds;
     timeDisplay.textContent = `READY: ${count}`;
 
     countdownId = setInterval(() => {
         count--;
         if (count > 0) {
             timeDisplay.textContent = `READY: ${count}`;
-            // Beep on 2 and 1
             if (count <= 2) playBeep(440, 0.1);
         } else {
             clearInterval(countdownId);
             timeDisplay.style.fontSize = "";
-            playBeep(880, 0.3); // Higher, longer beep for START
-            startTimer();
+            playBeep(880, 0.3);
+            startTimer(); // The timer kicks off here and switches the color to yellow (0-30s)
         }
     }, 1000);
+}
+
+// --- Event Listeners ---
+
+startBtn.addEventListener("click", () => {
+    clearAllIntervals();
+    elapsedTime = 0;
+    lastBeepSecond = -1;
+
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+
+    playBeep(880, 0.3);
+    startTimer();
 });
 
-// 3. The Combined Stop/Resume Button
+delayBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const delaySeconds = parseInt(btn.getAttribute("data-delay"), 10);
+        triggerDelay(delaySeconds);
+    });
+});
+
 stopResumeBtn.addEventListener("click", () => {
     if (isRunning) {
-        // Stop logic
         clearAllIntervals();
         updateUI("stopped");
     } else {
-        // Resume logic (only if there's time on the clock)
         if (elapsedTime > 0) {
             startTimer();
         }
     }
 });
 
-// 4. Reset
 resetBtn.addEventListener("click", () => {
     clearAllIntervals();
     elapsedTime = 0;
-    lastBeepSecond = -1
+    lastBeepSecond = -1;
     timeDisplay.textContent = "00:00";
-    document.body.style.backgroundColor = "#FFF9C4"; // Soft Yellow (Reset/Ready)
-    updateUI("reset");
+    document.body.style.backgroundColor = "#add8e6"; // Soft Blue (Reset/Ready)
+updateUI("reset");
 });
 
 function updateTime() {
@@ -150,30 +168,22 @@ function updateTime() {
     let s = totalSeconds % 60;
     let m = Math.floor((elapsedTime / (1000 * 60)) % 60);
 
-    // --- BEEP LOGIC ---
-    // Only check for a beep if we have moved to a brand new second
     if (totalSeconds !== lastBeepSecond) {
-
-        // Warning beeps: 28, 29 | 58, 59 | 88, 89
         if (totalSeconds === 28 || totalSeconds === 29 ||
             totalSeconds === 58 || totalSeconds === 59 ||
             totalSeconds === 88 || totalSeconds === 89) {
-            playBeep(440, 0.1); // Lower "warning" beep
+            playBeep(440, 0.1);
+            } else if (totalSeconds === 30 || totalSeconds === 60 || totalSeconds === 90) {
+                playBeep(880, 0.3);
             }
-
-            // Milestone beeps: 30, 60, 90
-            else if (totalSeconds === 30 || totalSeconds === 60 || totalSeconds === 90) {
-                playBeep(880, 0.3); // Higher "success" beep
-            }
-
-            lastBeepSecond = totalSeconds; // Update our memory
+            lastBeepSecond = totalSeconds;
     }
 
     // --- BACKGROUND COLOR LOGIC ---
-    if (totalSeconds < 0) { // Changed <= 0 to < 1 for smoother start
-        document.body.style.backgroundColor = "#FFF9C4";
+    if (totalSeconds < 0) {
+        document.body.style.backgroundColor = "#add8e6"; // Soft Blue before timing starts
     } else if (totalSeconds < 30) {
-        document.body.style.backgroundColor = "#add8e6";
+        document.body.style.backgroundColor = "#FFF9C4"; // Soft Yellow for 0-30s
     } else if (totalSeconds < 60) {
         document.body.style.backgroundColor = "#FFB74D";
     } else if (totalSeconds < 90) {
@@ -188,17 +198,14 @@ function updateTime() {
 function pad(unit) {
     return unit.toString().padStart(2, "0");
 }
-// --- WAKE LOCK API (Keep screen on) ---
+
+// --- Wake Lock API ---
 let wakeLock = null;
 
 const requestWakeLock = async () => {
     try {
         if ('wakeLock' in navigator) {
             wakeLock = await navigator.wakeLock.request('screen');
-            // Console log is helpful for debugging on a computer
-            console.log("Wake Lock is active (screen will stay bright).");
-
-            // Listen for when the phone handles the lock automatically (like minimizing)
             wakeLock.addEventListener('release', () => {
                 console.log("Wake Lock released.");
             });

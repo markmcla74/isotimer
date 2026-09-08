@@ -1,70 +1,57 @@
 /* style.css */
-*
-/* Import Roboto Mono - No dots in the zeros! */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
-{
+
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 /* 1. The Global Lock */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    /* This prevents horizontal scrolling entirely */
     overflow-x: hidden;
-    /* This stops the "rubber-band" bounce effect on mobile */
     position: fixed;
 }
 
 body {
-    background-color: #FFF9C4; /* Soft Yellow */
+    background-color: #add8e6; /* Soft Blue (Default / Ready State) */
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Prevents accidental scrolling on mobile */
-    /* Clean, modern font for everything */
+    overflow: hidden;
     font-family: -apple-system, sans-serif;
 }
 
 #timeContainer {
 text-align: center;
-/* Use a fixed percentage with a smaller max-width for a better "border" look */
 width: 85%;
 max-width: 400px;
-
-/* Padding provides the space inside the box */
 padding: 40px 20px;
-
 background-color: #222222;
 border-radius: 40px;
 box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-
-/* Ensure it's centered if flexbox has any issues */
 margin: auto;
 }
 
 #timeDisplay {
 color: #40c437;
 font-weight: 800;
-font-size: 22vw; /* Slightly smaller to ensure it stays in the box */
+font-size: 22vw;
 font-family: monospace;
 font-variant-numeric: tabular-nums;
-
-/* REMOVE letter-spacing or set to 0 to fix the right-side shift */
 letter-spacing: 0;
-
-/* Center the text block itself */
 display: block;
 width: 100%;
 margin-bottom: 20px;
 line-height: 1;
 }
-/* For larger screens (tablets/landscape) */
+
 @media (min-width: 600px) {
     #timeDisplay {
     font-size: 100px;
@@ -79,7 +66,7 @@ line-height: 1;
 }
 
 button {
-    flex: 1 1 130px; /* Makes buttons chunky and easy to tap */
+    flex: 1 1 130px;
     padding: 15px 10px;
     font-size: 14px;
     font-weight: bold;
@@ -87,7 +74,7 @@ button {
     border-radius: 15px;
     cursor: pointer;
     text-transform: uppercase;
-    font-family: inherit; /* Takes the clean font from the body */
+    font-family: inherit;
 }
 
 .startTimerBtn { background-color: #0000FF; color: white; }
