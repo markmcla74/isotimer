@@ -1,7 +1,10 @@
 <p align="center">
   <img src="iconImage.png" alt="App Feature Image" width="300">
 </p>
-The Isometric Exercise Timer is designed to follow the 30/60/90 second isometric protocol for overcoming isometric exercises. Overcoming isometrics are strength exercises where you exert maximal force against an immovable object or resistance. Examples include a bicep curl with a WorldFit ISO Trainer strap, or an isometric squat using a forearm forklift strap wrapped around your waist and looped around your feet. The protocol is 30 seconds moderate effort, 30 seconds hard effort, and the final 30 seconds as hard as you can (while staying safe).  https://markmcla74.github.io/isotimer/
+https://markmcla74.github.io/isotimer/
+The Isometric Exercise Timer is designed to follow the 30/60/90 second isometric protocol for overcoming isometric exercises. Overcoming isometrics are strength exercises where you exert maximal force against an immovable object or resistance. The protocol is 30 seconds moderate effort, 30 seconds hard effort, and the final 30 seconds as hard as you can (while staying safe). Watch Steve Maxwell demonstrate examples of this exercise protocol: https://www.youtube.com/watch?v=S3_SRGV9-1U 
+
+If you like this style of exercise, I recommend that you purchase a World Fit ISO trainer and a forearm forklift strap. Both are available on Amazon.
 
 "IsoTimer" can feel exactly like a native App Store download using a built-in mobile feature called "Add to Home Screen." It places a dedicated icon right on your phone's home screen for instant access!
 
