@@ -1,4 +1,3 @@
-<p></p>
 <p align="center">
   <img src="iconImage.png" alt="IsoTimer" width="300">
 </p>
@@ -30,7 +29,6 @@ Gradually increase the intensity.
 Finish with your strongest controlled effort.
 
 The approach is based on the isometric training methodology taught by **Steve Maxwell**.
-<p> </p>
 
 The **Delay 30**, **Delay 60**, and **Delay 90** buttons can also be used as timed recovery periods between exercises.
 
