@@ -32,6 +32,17 @@ Finish with your strongest controlled effort.
 The approach is based on the isometric training methodology taught by **Steve Maxwell**.
 
 ---
+## Using the Delay Between Exercises
+
+The **Delay 30**, **Delay 60**, and **Delay 90** buttons can also be used as timed recovery periods between exercises.
+
+A shorter, controlled recovery keeps you moving from one exercise to the next rather than waiting until your heart rate has completely returned to rest.
+
+This allows a series of isometric exercises to become a more continuous workout, combining the isometric contractions with a cardiovascular conditioning component.
+
+Choose the recovery period according to the exercise, your conditioning, and how you feel. **There is no need to rush the recovery.**
+
+---
 
 ## See Isometric Exercising in Action
 
@@ -71,17 +82,7 @@ Drew Baye's book on Timed Static Contractions is an excellent additional resourc
 
 ---
 
-## Using the Delay Between Exercises
 
-The **Delay 30**, **Delay 60**, and **Delay 90** buttons can also be used as timed recovery periods between exercises.
-
-A shorter, controlled recovery keeps you moving from one exercise to the next rather than waiting until your heart rate has completely returned to rest.
-
-This allows a series of isometric exercises to become a more continuous workout, combining the isometric contractions with a cardiovascular conditioning component.
-
-Choose the recovery period according to the exercise, your conditioning, and how you feel. **There is no need to rush the recovery.**
-
----
 
 ## Equipment for Overcoming Isometrics
 
