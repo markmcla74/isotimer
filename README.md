@@ -33,7 +33,7 @@ The approach is based on the isometric training methodology taught by **Steve Ma
 
 ---
 
-## See It in Action
+## See Isometric Exercising in Action
 
 ### Steve Maxwell — Isometric Wall Seat
 
