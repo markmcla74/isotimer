@@ -137,6 +137,7 @@ IsoTimer is also available as a free Android app.
 ## Make It Your Own
 
 IsoTimer is a deliberately simple **Progressive Web App**. The complete source code is available here on GitHub.
+**[Source Code →](https://github.com/markmcla74/isotimer/tree/main)**
 
 If you'd like a timer with different intervals, colors, sounds, terminology, or a completely different exercise protocol, **fork this repository and modify it as you wish.**
 
