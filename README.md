@@ -30,9 +30,7 @@ Gradually increase the intensity.
 Finish with your strongest controlled effort.
 
 The approach is based on the isometric training methodology taught by **Steve Maxwell**.
-
----
-## Using the Delay Between Exercises
+<p> </p>
 
 The **Delay 30**, **Delay 60**, and **Delay 90** buttons can also be used as timed recovery periods between exercises.
 
