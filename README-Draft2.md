@@ -1,3 +1,4 @@
+<p></p>
 <p align="center">
   <img src="iconImage.png" alt="IsoTimer" width="300">
 </p>
