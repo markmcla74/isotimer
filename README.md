@@ -30,13 +30,7 @@ Finish with your strongest controlled effort.
 
 The approach is based on the isometric training methodology taught by **Steve Maxwell**.
 
-The **Delay 30**, **Delay 60**, and **Delay 90** buttons can also be used as timed recovery periods between exercises.
-
-A shorter, controlled recovery keeps you moving from one exercise to the next rather than waiting until your heart rate has completely returned to rest.
-
-This allows a series of isometric exercises to become a more continuous workout, combining the isometric contractions with a cardiovascular conditioning component.
-
-Choose the recovery period according to the exercise, your conditioning, and how you feel. **There is no need to rush the recovery.**
+The **Delay Buttons** can be used either to get into position before the timing starts, or as timed recovery periods between exercises.
 
 ---
 
@@ -113,11 +107,13 @@ IsoTimer can feel just like a native app when installed on your phone using the 
 
 ### 📱 iPhone — Safari
 
-Tap the **Share** button, scroll down, and tap **Add to Home Screen**.
+Launch IsoTimer. Tap the **Share** button, scroll down, and tap **Add to Home Screen**.
+[Launch IsoTimer](https://markmcla74.github.io/isotimer/)
 
 ### 🤖 Android — Chrome
 
-Tap the **three dots** in the top right, then tap **Add to Home Screen** or **Install app**.
+Launch IsoTimer. Tap the **three dots** in the top right, then tap **Add to Home Screen** or **Install app**.
+[Launch IsoTimer](https://markmcla74.github.io/isotimer/)
 
 Once installed, IsoTimer has its own icon on your home screen and can be launched like any other app.
 
@@ -137,7 +133,3 @@ IsoTimer is a deliberately simple **Progressive Web App**. The complete source c
 **[Source Code →](https://github.com/markmcla74/isotimer/tree/main)**
 
 If you'd like a timer with different intervals, colors, sounds, terminology, or a completely different exercise protocol, **fork this repository and modify it as you wish.**
-
-You don't need to start from scratch. The existing HTML, CSS, JavaScript, and PWA manifest provide a working foundation that you can customize for your own needs.
-
-**That's one of the reasons this project is open source: if the timer isn't quite right for you, change it.**
