@@ -76,7 +76,7 @@ Drew Baye's book on Timed Static Contractions is an excellent additional resourc
 
 ## Equipment for Overcoming Isometrics
 
-Here are two examples of equipment that can be useful for overcoming isometric exercises:
+Here are two pieces of equipment that I recommend for overcoming isometric exercises:
 
 <table>
   <tr>
@@ -96,8 +96,6 @@ Here are two examples of equipment that can be useful for overcoming isometric e
     </td>
   </tr>
 </table>
-
-These are examples rather than requirements. Many isometric exercises can be performed without specialized equipment.
 
 ---
 
@@ -129,7 +127,7 @@ IsoTimer is also available as a free Android app.
 
 ## Make It Your Own
 
-IsoTimer is a deliberately simple **Progressive Web App**. The complete source code is available here on GitHub.
+IsoTimer is a **Progressive Web App**. The complete source code is available here on GitHub.
 **[Source Code →](https://github.com/markmcla74/isotimer/tree/main)**
 
-If you'd like a timer with different intervals, colors, sounds, terminology, or a completely different exercise protocol, **fork this repository and modify it as you wish.**
+If you'd like a timer with different intervals, colors, sounds, or a completely different exercise protocol, **fork this repository and modify it as you wish.**
