@@ -99,7 +99,7 @@ Here are two pieces of equipment that I recommend for overcoming isometric exerc
 
 ---
 
-## Install the PWA
+## Install IsoTimer Directly from Browser
 
 IsoTimer can feel just like a native app when installed on your phone using the browser's **Add to Home Screen** or **Install App** feature.
 
@@ -117,17 +117,14 @@ Once installed, IsoTimer has its own icon on your home screen and can be launche
 
 ---
 
-## Google Play
-
-IsoTimer is also available as a free Android app.
-
-**[Get IsoTimer on Google Play →](https://play.google.com/store/apps/details?id=com.markmcla.isotimer)**
-
----
-
 ## Make It Your Own
 
 IsoTimer is a **Progressive Web App**. The complete source code is available here on GitHub.
 **[Source Code →](https://github.com/markmcla74/isotimer/tree/main)**
 
 If you'd like a timer with different intervals, colors, sounds, or a completely different exercise protocol, **fork this repository and modify it as you wish.**
+
+## 🚀 Get More Free Apps
+You are welcome to download this app, or any of my other apps, from the Google Play Store. All of my apps are **free, and none of them contain ads**.
+
+[Browse all apps by markmcla on the Google Play Store](https://play.google.com/store/search?q=markmcla&c=apps)
